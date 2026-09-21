@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Open roles — Soket AI Careers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html">Soket</a>
+    <nav>
+      <a href="index.html#work">The work</a>
+      <a href="index.html#hire">How we hire</a>
+      <a href="jobs.html">Open roles</a>
+      <a class="nav-cta" href="index.html">Careers home</a>
+    </nav>
+  </header>
+  <main class="section" style="padding-top:48px">
+    <p class="kicker">Open roles</p>
+    <h1 style="max-width:none;font-size:56px">Open roles</h1>
+    <p class="lede">Filter by team. Most roles are Bengaluru-first.</p>
+    <div class="filters" id="filters">
+      <button class="on" data-f="All">All</button>
+      <button data-f="Research">Research</button>
+      <button data-f="Systems">Systems</button>
+      <button data-f="Platform">Platform</button>
+      <button data-f="Operations">Operations</button>
+    </div>
+    <p id="count" class="kicker"></p>
+    <div id="board" class="job-list"></div>
+  </main>
+  <footer class="foot">
+    <div>
+      <strong>Soket AI Labs</strong>
+      <p>Indicube Miniforest, J.P. Nagar, Bengaluru 560078</p>
+    </div>
+    <div>
+      <a href="mailto:connect@soket.ai">connect@soket.ai</a>
+    </div>
+    <p class="legal">© 2026 Soket AI. Prototype careers surface.</p>
+  </footer>
+  <script src="jobs.js"></script>
+  <script>
+    renderBoard();
+    document.getElementById("filters").addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      document.querySelectorAll("#filters button").forEach(b => b.classList.toggle("on", b === btn));
+      renderBoard(btn.dataset.f);
+    });
+  </script>
+</body>
+</html>
